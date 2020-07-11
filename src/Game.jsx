@@ -673,13 +673,13 @@ function Game() {
         </Col>
         <Col sm="12" md={{ size: 6, offset: 3 }} style={{display:'flex'}}>
           <Col className='bottom-part'>
-              <span style={{marginRight:'15px', fontWeight:'700', fontSize:'2rem', color:'#0069D9'}}>LIFES : {gameCounter}</span>
+              <span style={{marginRight:'10px', fontWeight:'700', fontSize:'1.8rem', color:'#0069D9'}}>LIFES : {gameCounter}</span>
           </Col>
           <Col className='bottom-part'>
               <Button disabled={gameCounter === 0} color="primary" onClick={()=>playGame()}>{!firstTime ? 'Roll Again' : 'Roll the dices !'}</Button>
           </Col>
           <Col className='bottom-part'>
-              <Button disabled={firstTime} style={{marginLeft:'20px'}} color="success" onClick={()=>handleJouer()}>Jouer!</Button>
+              <Button disabled={firstTime} style={{marginLeft:'10px'}} color="success" onClick={()=>handleJouer()}>Jouer!</Button>
           </Col>
         </Col>
       </Row>
