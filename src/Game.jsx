@@ -684,7 +684,10 @@ function Game() {
         </Col>
       </Row>
       <Col className='text-left' sm="12" md={{ size: 6, offset: 3 }} >
-      <Button style={{margin:'5px', padding:'1px'}} color="danger" size='sm' onClick={()=>{localStorage.clear(); setResetGame(true)}}>reset game</Button>
+      {/* <Button style={{margin:'5px', padding:'1px'}} color="danger" size='sm' onClick={()=>{localStorage.clear(); setResetGame(true)}}>reset game</Button> */}
+      <span className='text-rigth'  style={{fontSize:'0.8rem', color:'red'}} onClick={()=>{localStorage.clear(); setResetGame(true)}}>
+        reset game
+      </span> 
       </Col>
     </Container>
   );
