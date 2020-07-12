@@ -32,15 +32,6 @@ function Game() {
         height: '30px',
         cursor: 'pointer',
     }
-    var headerStyle = {
-        display:'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        border: '1px solid #6495ED',
-        borderRadius: '10px',
-        padding: '10px',
-        minHeight:'55px'
-    }
     var totalStyle = {
         height:'35px', 
         display:'flex', 
@@ -532,8 +523,8 @@ function Game() {
       </Modal>
 
       <Row>
-        <Col sm="12" md={{ size: 6, offset: 3 }} style={headerStyle}>
-        {headerPlayers}          
+        <Col sm="12" md={{ size: 6, offset: 3 }} id='header' >
+          {headerPlayers}          
         </Col>        
       </Row>
       <Row>
@@ -669,19 +660,17 @@ function Game() {
       
       <Row>     
         <Col sm="12" md={{ size: 6, offset: 3 }} id='dice-zone'>
-        {diceList}
+          {diceList}
         </Col>
-        <Col sm="12" md={{ size: 6, offset: 3 }} style={{display:'flex'}}>
-          <Col className='bottom-part'>
-              <span style={{marginRight:'10px', fontWeight:'700', fontSize:'1.8rem', color:'#0069D9'}}>LIFES : {gameCounter}</span>
-          </Col>
-          <Col className='bottom-part'>
-              <Button disabled={gameCounter === 0} color="primary" onClick={()=>playGame()}>{!firstTime ? 'Roll Again' : 'Roll the dices !'}</Button>
-          </Col>
-          <Col className='bottom-part'>
-              <Button disabled={firstTime} style={{marginLeft:'10px'}} color="success" onClick={()=>handleJouer()}>Jouer!</Button>
-          </Col>
-        </Col>
+      </Row>
+      <Row>
+        <Col sm="12" md={{ size: 6, offset: 3 }} id='buttons-zone'>
+            <span style={{fontWeight:'700', fontSize:'1.3rem', color:'#0069D9'}}>LIFES : {gameCounter}</span>
+            
+            <span><Button disabled={gameCounter === 0} color="primary" onClick={()=>playGame()}>{!firstTime ? 'Roll Again' : 'Roll the dices!'}</Button></span>
+          
+            <span><Button disabled={firstTime} color="success" onClick={()=>handleJouer()}>Jouer!</Button></span>
+        </Col>        
       </Row>
       <Col className='text-left' sm="12" md={{ size: 6, offset: 3 }} >
       {/* <Button style={{margin:'5px', padding:'1px'}} color="danger" size='sm' onClick={()=>{localStorage.clear(); setResetGame(true)}}>reset game</Button> */}
