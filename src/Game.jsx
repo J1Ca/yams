@@ -86,17 +86,17 @@ function Game() {
     }
 
     const handleCaseClick = (userName, nameGrille, numberGrille) => {
-      if(firstTime){setModalText('Roll the dices first :)'); return setModal(true)}
+      if(firstTime){setModalText('Roll the dices first 🙃'); return setModal(true)}
       //checking active user
       if (userName !== activePlayer) {        
-        setModalText('opps that is not your case');
+        setModalText('😅 opps that is not your case');
         return setModal(true)
       }
       //checking if case is already fill
       const playerInfo = localData.find(e => e.name === activePlayer)
       const selectCase = playerInfo.grille.find(e => e.name === nameGrille)
       if (selectCase.fill === true) {
-        setModalText('Case already fill, select another case');
+        setModalText('Case already fill 🤦‍♂️ select another');
         return setModal(true)
       }
 
@@ -141,7 +141,9 @@ function Game() {
         let firstValue = orderedDices.filter(e=>e.number === orderedDices[0].number);
         let secondValue = orderedDices.filter(e=>e.number === orderedDices[4].number);
         let fullValue = 0
-        if (firstValue.length === 3 && secondValue.length === 2 || firstValue.length === 2 && secondValue.length === 3){
+        let firstCase = firstValue.length === 3 && secondValue.length === 2 ? true : false;
+        let secondCase = firstValue.length === 2 && secondValue.length === 3 ? true : false;
+        if (firstCase || secondCase){
           fullValue = 25
         }
         return updateGrille(fullValue, nameGrille)
@@ -172,8 +174,9 @@ function Game() {
     //handling dices 
     const handleRollDiceParent = (diceId) => {
       var selectedDices = allDices.map((e)=> {
-        if(e.id === diceId) {        
-          return {id:e.id, number: e.number, select:!e.select}
+        if(e.id === diceId) {    
+          e.select = !e.select
+          return e
         } else {
           return e
         }
@@ -207,7 +210,8 @@ function Game() {
         let rollAgain = allDices.map((e)=> {
         if(!e.select) {
           let diceNumber= (Math.floor(Math.random() * 6 + 1))
-          return {id:e.id, number: diceNumber, select:e.select}
+          e.number = diceNumber;
+          return e;
         } else {
           return e;
         }
@@ -269,10 +273,6 @@ function Game() {
       whoIsActive();
     }
     
-    if(globalCounter > (12*localData.length)){
-      alert('se acabo!! y no ganaste')
-    }
-
     //making dynamic grille
     let headerPlayers = localData.map((e,i)=>{
       if(activePlayer === e.name) {
@@ -510,9 +510,15 @@ function Game() {
         )
     })
     
-    let diceList = allDices.map((e) => {        
+    let diceList = allDices.map((e) => { 
       return <Dice rollDiceParent={handleRollDiceParent} key={e.id} id={e.id} diceNumber={e.number} isSelected={e.select}/>
     })
+
+    //finish game
+    if(globalCounter > (12*localData.length)){
+      setModalText(`🎉🎊Trop forte! 💪 t'as gagné🎊🎉`);
+      setModal(true)
+    }
 
   return (
     <Container >

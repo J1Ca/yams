@@ -41,19 +41,19 @@ const NavBar = () => {
               </DropdownToggle>
               <DropdownMenu right>
                 <NavbarText style={{marginLeft:'10px'}}>
-                    Se perderan todos los datos :o, are you sure?
+                  Toutes les données seront effacées <span role='img' aria-label='wow'>😮</span>, are you sure?
                 </NavbarText>
                 <DropdownItem divider />
                 <DropdownItem onClick={()=>{toggle();localStorage.clear(); setResetGame(true)}}>
-                  Yes, reset game!
+                  OUI, reset game!
                 </DropdownItem>
                 <DropdownItem onClick={()=>toggle()}>
-                  No, I keep playing :
+                  Non, I keep playing <span role='img' aria-label='smile'>😊</span>
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
-          <NavbarText>Created by Jose Luis</NavbarText>
+          <NavbarText> © by Jose Luis</NavbarText>
         </Collapse>
       </Navbar>
     </div>
