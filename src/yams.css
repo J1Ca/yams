@@ -73,6 +73,16 @@
   font-weight: 500;
 }
 
+.dynamic-case {
+  display: flex; 
+  height: 35px; 
+  justify-content: space-between;
+  align-items: center;  
+  border-radius: 5px;
+  border: 1px solid rgba(100,149,237,.5);
+  padding-top: 2px;
+}
+
 .rollingDice {  
   animation-duration: 1s;
   animation-name: slidein;

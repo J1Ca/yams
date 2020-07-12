@@ -11,36 +11,28 @@ import Dice from './Dice'
 import NavBar from './navbar'
 
 function Game() {    
-    var caseStyle = {
-        height:'35px', 
-        display:'flex', 
-        justifyContent:'space-between',
-        alignItems:'center',  
-        borderRadius:'5px',
-        border:'1px solid rgba(100,149,237,.5)',
-        paddingTop: '2px' 
-    }
     var scoreStyle = {
-        display: 'inline-block',
-        marginLeft: '4px', 
-        marginBottom:'0px',
-        marginTop:'2px',
-        padding:'2px', 
-        border:'1px solid rgba(0,0,0,.2)', 
-        borderRadius:'5px',
-        width: '30px',
-        height: '30px',
-        cursor: 'pointer',
-        backgroundColor: 'white'
+      display: 'inline-block',
+      marginLeft: '4px', 
+      marginBottom:'0px',
+      marginTop:'2px',
+      padding:'2px', 
+      border:'1px solid rgba(0,0,0,.2)', 
+      borderRadius:'5px',
+      width: '35px',
+      height: '30px',
+      cursor: 'pointer',
     }
-    var totalStyle = {
-        height:'35px', 
-        display:'flex', 
-        justifyContent:'space-between',
-        alignItems:'center',  
-        borderRadius:'5px',
-        border:'1px solid rgb(100,149,237)',
-        paddingTop: '2px',
+    var resultStyle = {
+      display: 'inline-block',
+      marginLeft: '4px', 
+      marginBottom:'0px',
+      marginTop:'2px',
+      padding:'2px', 
+      border:'1px solid rgba(0,0,0,.2)', 
+      borderRadius:'5px',
+      width: '35px',
+      height: '30px',
     }
 
     const [localData, setLocalData] = useState(JSON.parse(localStorage.getItem('localGame')));
@@ -304,50 +296,56 @@ function Game() {
         )
     })
     let caseAs = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'As', 1)}
-          >{e.grille[0].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'As', 1)}
+        >{e.grille[0].value}</span>
+      )
     })
 
     let caseDeux = localData.map((e,i)=>{
-        return (
-        <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Deux', 2)}
-        >{e.grille[1].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+      <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Deux', 2)}
+      >{e.grille[1].value}</span>
+      )
     })
 
     let caseTrois = localData.map((e,i)=>{
-        return (
-            <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Trois', 3)}
-            >{e.grille[2].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+          <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Trois', 3)}
+          >{e.grille[2].value}</span>
+      )
     })
 
     let caseQuatre = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Quatre', 4)}
-          >{e.grille[3].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Quatre', 4)}
+        >{e.grille[3].value}</span>
+      )
     })
 
     let caseCinq = localData.map((e,i)=>{
-        return (
-        <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Cinq', 5)}
-        >{e.grille[4].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+      <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Cinq', 5)}
+      >{e.grille[4].value}</span>
+      )
     })
     let caseSix = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Six', 6)}
-          >{e.grille[5].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Six', 6)}
+        >{e.grille[5].value}</span>
+      )
     })
     //setting Total
     let caseTotal = localData.map((e,i)=>{
@@ -358,7 +356,7 @@ function Game() {
           }
         }
         return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 rounded text-center'
+          <span key={i} style={resultStyle} className='shadow-sm mb-1 rounded text-center'
           >{sumTotal === 0 ? null : sumTotal}</span>
         )
     })
@@ -375,7 +373,7 @@ function Game() {
             bonus = 35
         }      
         return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
+          <span key={i} style={resultStyle} className='shadow-sm mb-1 bg-white rounded text-center'
           >{bonus === 0 ? null : bonus}</span>
           )
     })
@@ -392,26 +390,28 @@ function Game() {
           bonus = 35
         }      
         return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
+          <span key={i} style={resultStyle} className='shadow-sm mb-1 bg-white rounded text-center'
           >{bonus+sumTotal === 0 ? null : bonus+sumTotal}</span>
         )
     })
 
   //second part grille
     let casePlus = localData.map((e,i)=>{
-        return (
-          <div key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Plus')}
-          >{e.grille[6].value}</div>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <div key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Plus')}
+        >{e.grille[6].value}</div>
+      )
     })
 
     let caseMoins = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Moins')}
-          >{e.grille[7].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Moins')}
+        >{e.grille[7].value}</span>
+      )
     })
 
     let caseTotal2 = localData.map((e,i)=>{
@@ -425,39 +425,43 @@ function Game() {
           sumTotal2 -= e.grille[7].value
         }      
         return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
+          <span key={i} style={resultStyle} className='shadow-sm mb-1 bg-white rounded text-center'
           >{sumTotal2 === 0 ? null : sumTotal2}</span>
         )
     })
 
     let caseSuite = localData.map((e,i)=>{
-        return (
-        <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Suite')}
-        >{e.grille[8].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+      <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Suite')}
+      >{e.grille[8].value}</span>
+      )
     })
     let caseFull = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Full')}
-          >{e.grille[9].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle}  className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Full')}
+        >{e.grille[9].value}</span>
+      )
     })
 
     let caseCarre = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'Carré')}
-          >{e.grille[10].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle}  className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'Carré')}
+        >{e.grille[10].value}</span>
+      )
     })
     let caseYam = localData.map((e,i)=>{
-        return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
-            onClick={()=>handleCaseClick(e.name, 'YAM')}
-          >{e.grille[11].value}</span>
-        )
+      let styleActive = e.name === activePlayer ? 'shadow mb-1 rounded text-center' : 'mb-1 rounded text-center';
+      return (
+        <span key={i} style={scoreStyle} className={styleActive}
+          onClick={()=>handleCaseClick(e.name, 'YAM')}
+        >{e.grille[11].value}</span>
+      )
     })
 
     //seting Total3
@@ -469,7 +473,7 @@ function Game() {
           }
         }
         return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
+          <span key={i} style={resultStyle} className='shadow-sm mb-1 bg-white rounded text-center'
           >{sumTotal3 === 0 ? null : sumTotal3}</span>
         )
     })
@@ -501,7 +505,7 @@ function Game() {
           }
         }
         return (
-          <span key={i} style={scoreStyle} className='shadow-sm mb-1 bg-white rounded text-center'
+          <span key={i} style={resultStyle} className='shadow-sm mb-1 bg-white rounded text-center'
           >{sumTotal+bonus+sumTotal2+sumTotal3 === 0 ? null : sumTotal+bonus+sumTotal2+sumTotal3}</span>
         )
     })
@@ -538,37 +542,37 @@ function Game() {
                       {casePlayers}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     As : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseAs}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Deux : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseDeux}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Trois : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseTrois}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Quatre : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseQuatre}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Cinq : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseCinq}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Six : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseSix}
@@ -601,13 +605,13 @@ function Game() {
                       {casePlayers}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Plus : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {casePlus}
                     </span> 
                 </Col> 
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Moins: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseMoins}
@@ -619,25 +623,25 @@ function Game() {
                       {caseTotal2}
                     </span> 
                 </Col> 
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Suit: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseSuite}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Full: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseFull}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     Carré: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseCarre}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
+                <Col className='dynamic-case shadow-sm p-2 mb-1 bg-white rounded'>
                     YAM: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseYam}

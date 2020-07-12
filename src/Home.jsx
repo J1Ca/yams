@@ -104,7 +104,7 @@ function Home() {
     }
 
   return (
-    <Container fluid={true}>
+    <Container fluid={true} style={{minHeight:'100vh'}}>
         <NavBar/>
         <Modal isOpen={modal}>
             <ModalHeader>OOOPS !</ModalHeader>
@@ -130,7 +130,6 @@ function Home() {
                         <option></option>  
                         <option>1</option>
                         <option>2</option>
-                        <option>3</option>
                     </Input>
                 </FormGroup>
 
@@ -139,6 +138,11 @@ function Home() {
                 <Button color='primary' style={{minWidth:'260px',fontWeight:'500', marginBottom:'30px'}} onClick={()=>localStockPlayers()}>Go to the game !</Button>                                              
             </Col>
         </Row>
+        {/* poner esta wea al fondo
+        <Row className='text-center d-flex align-items-end flex-column'>
+            <Col>created by Jose Luis</Col>
+        </Row> */}
+        
     </Container>
   );
 }
