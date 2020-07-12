@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {Redirect} from 'react-router-dom';
-import './yams.css';
 import { 
     Button,
     Label, 
@@ -11,6 +10,7 @@ import {
     FormGroup,
     Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
+import NavBar from './navbar'
 
 function Home() {
     const [players, setPlayers] = useState('');
@@ -33,7 +33,7 @@ function Home() {
             let label = 'Player'+(i+1)
             playersInputs.push(
                 <FormGroup key={i}>
-                    <Label>{label}</Label>
+                    <Label style={{marginRight:'15px', fontWeight:'400', fontSize:'.9rem', color:'#7d7c83'}}>{label}</Label>
                     <Input onChange={(e) => addPlayerState(label, e.target.value)} type="text" key={i} name={label} placeholder="Your name" />
                 </FormGroup>
             )
@@ -104,7 +104,8 @@ function Home() {
     }
 
   return (
-    <Container style={{marginTop: '50px'}}>
+    <Container fluid={true}>
+        <NavBar/>
         <Modal isOpen={modal}>
             <ModalHeader>OOOPS !</ModalHeader>
             <ModalBody>
@@ -116,14 +117,15 @@ function Home() {
         </Modal>
         
         <Row>
-            <Col style={{margin:'50px', color:'#0069D9'}} className='text-center'>
-                <span style={{marginRight:'15px', fontWeight:'700', fontSize:'3rem', color:'#0069D9'}}>YAMS !</span>
+            <Col style={{margin:'30px'}} className='text-center'>
+                <Col style={{fontWeight:'800', fontSize:'3rem', color:'black', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Escribir algo<br/>de 3 lineas en <br/> los tels!</Col>
+                <Col style={{fontWeight:'500', fontSize:'1.1rem', color:'#7d7c83', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Create the perfect palette or get inspired<br/>by thousands of beautiful color schemes.</Col>
             </Col>        
         </Row>
         <Row>
-            <Col sm="12" md={{ size: 6, offset: 3 }}>
+            <Col sm="12" md={{ size: 6}} className='text-center'>
                 <FormGroup>
-                    <Label for="exampleSelect">How many players?</Label>
+                    <Label style={{marginRight:'15px', fontWeight:'700', fontSize:'1rem', color:'#7d7c83'}}>How many players?</Label>
                     <Input onChange={(e) => setPlayers(e.target.value)} type="select">
                         <option></option>  
                         <option>1</option>
@@ -134,7 +136,7 @@ function Home() {
 
                 {playersInputs}
 
-                <Button color='primary' onClick={()=>localStockPlayers()}>Go !</Button>                                              
+                <Button color='primary' style={{minWidth:'260px',fontWeight:'500', marginBottom:'30px'}} onClick={()=>localStockPlayers()}>Go to the game !</Button>                                              
             </Col>
         </Row>
     </Container>

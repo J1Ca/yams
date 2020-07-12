@@ -21,9 +21,10 @@
   border: 1px solid #6495ED;
   border-radius: 10px;
   padding: 10px;
-  min-height: 55px;
+  min-height: 45px;
   margin-left: 1%;
   margin-right: 1%;
+  padding: 0px
 }
 
 #dice-zone {
@@ -52,11 +53,24 @@
 
 .h-player {
   display: flex; 
-  height: 35px; 
+  height: 30px; 
   justify-content: space-between;
   align-items: center;  
   border-radius: 5px;
   border: 1px solid rgba(100,149,237,.5);
+}
+
+.inchange-case {
+  display: flex; 
+  height: 35px; 
+  justify-content: space-between;
+  align-items: center;  
+  border-radius: 5px;
+  border: 1px solid#EA532A;
+  padding-top: 2px; 
+  /* background-color:rgba(100,149,237,.8); */
+  color: #EA532A;
+  font-weight: 500;
 }
 
 .rollingDice {  

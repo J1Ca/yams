@@ -8,7 +8,7 @@ import {
     Modal, ModalHeader, ModalBody, ModalFooter
 } from 'reactstrap';
 import Dice from './Dice'
-import { Redirect } from 'react-router-dom';
+import NavBar from './navbar'
 
 function Game() {    
     var caseStyle = {
@@ -31,6 +31,7 @@ function Game() {
         width: '30px',
         height: '30px',
         cursor: 'pointer',
+        backgroundColor: 'white'
     }
     var totalStyle = {
         height:'35px', 
@@ -46,7 +47,6 @@ function Game() {
     const [globalCounter, setGlobalCounter] = useState(JSON.parse(localStorage.getItem('globalCounter')))
     const [gameCounter, setGameCounter] = useState(3);
     const [firstTime, setFirstTime] = useState(true);
-    const [resetGame, setResetGame] = useState(false)
     const [activePlayer, setActivePlayer] = useState(null);
     const [allDices, setAllDices] = useState([])
     const [selectedCase, setSelectedCase] = useState(null)
@@ -269,14 +269,14 @@ function Game() {
       localStorage.setItem('localGame', JSON.stringify(copyLocal));
       localStorage.setItem('globalCounter', globalCounter+1);
       localStorage.removeItem('snapshotGame');
-      setGlobalCounter(globalCounter+1)
-      setAllDices([])
-      setFirstTime(true)
-      setGameCounter(3)
-      whoIsActive()
+      setGlobalCounter(globalCounter+1);
+      setAllDices([]);
+      setFirstTime(true);
+      setGameCounter(3);
+      setSelectedCase(null);
+      whoIsActive();
     }
     
-    if(resetGame){return <Redirect to='/'/>}
     if(globalCounter > (12*localData.length)){
       alert('se acabo!! y no ganaste')
     }
@@ -291,7 +291,7 @@ function Game() {
         )
       } else {
         return (
-        <span key={i} className='h-player shadow-sm ml-2 pl-2 pr-2 rounded text-center'
+        <span key={i} className='h-player ml-2 pl-2 pr-2 rounded text-center'
         >{(i+1)+' - '+e.name}</span>
         )        
       }      
@@ -512,6 +512,7 @@ function Game() {
 
   return (
     <Container >
+      <NavBar/>
       <Modal isOpen={modal}>
         <ModalHeader>OOOPS !</ModalHeader>
         <ModalBody>
@@ -530,62 +531,62 @@ function Game() {
       <Row>
         <Col sm="12" md={{ size: 6, offset: 3 }} id="main-grille">
             {/* left grille */}
-            <Col sm="6">
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+            <Col sm="6" style={{padding:'0px', marginRight:'6px'}}>
+                <Col className='inchange-case shadow p-2 mb-1 rounded'>
                     Player: 
                     <span className='text-rigth'>
                       {casePlayers}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     As : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseAs}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Deux : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseDeux}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Trois : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseTrois}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Quatre : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseQuatre}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Cinq : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseCinq}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Six : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseSix}
                     </span> 
                 </Col>
-                <Col style={totalStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col className='inchange-case shadow-sm p-2 mb-1 rounded'>
                     Total : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseTotal}
                     </span> 
                 </Col>
-                <Col style={totalStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col className='inchange-case shadow-sm p-2 mb-1 rounded'>
                     Bonus : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseBonus}
                     </span> 
                 </Col>
-                <Col style={totalStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col className='inchange-case shadow-sm p-2 mb-1 rounded'>
                     Total I : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseTotal1}
@@ -593,62 +594,62 @@ function Game() {
                 </Col>             
             </Col>
             {/* right grille */}
-            <Col sm="6">
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+            <Col sm="6" style={{padding:'0px'}}>
+                <Col className='inchange-case shadow p-2 mb-1 rounded'>
                     Player: 
                     <span className='text-rigth'>
                       {casePlayers}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Plus : 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {casePlus}
                     </span> 
                 </Col> 
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Moins: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseMoins}
                     </span> 
                 </Col>
-                <Col style={totalStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col className='inchange-case shadow-sm p-2 mb-1 rounded'>
                     Total II: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseTotal2}
                     </span> 
                 </Col> 
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Suit: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseSuite}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Full: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseFull}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     Carré: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseCarre}
                     </span> 
                 </Col>
-                <Col style={caseStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col style={caseStyle} className='shadow-sm p-2 mb-1 bg-white rounded'>
                     YAM: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseYam}
                     </span> 
                 </Col>
-                <Col style={totalStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col className='inchange-case shadow-sm p-2 mb-1 rounded'>
                     Total III: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseTotal3}
                     </span> 
                 </Col>     
-                <Col style={totalStyle} className='shadow-sm p-2 mb-2 bg-white rounded'>
+                <Col className='inchange-case shadow-sm p-2 mb-1 rounded'>
                     Result: 
                     <span style={{display:'flex', alignItems:'center'}} className='text-rigth'>
                       {caseResult}
@@ -672,12 +673,6 @@ function Game() {
             <span><Button disabled={firstTime} color="success" onClick={()=>handleJouer()}>Jouer!</Button></span>
         </Col>        
       </Row>
-      <Col className='text-left' sm="12" md={{ size: 6, offset: 3 }} >
-      {/* <Button style={{margin:'5px', padding:'1px'}} color="danger" size='sm' onClick={()=>{localStorage.clear(); setResetGame(true)}}>reset game</Button> */}
-      <span className='text-rigth'  style={{fontSize:'0.8rem', color:'red'}} onClick={()=>{localStorage.clear(); setResetGame(true)}}>
-        reset game
-      </span> 
-      </Col>
     </Container>
   );
 }
