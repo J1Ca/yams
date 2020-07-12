@@ -243,7 +243,7 @@ function Game() {
     //jouer buttom
     const handleJouer = () => {
       if(!selectedCase){
-        setModalText('select one case');
+        setModalText('🤦‍♂️ select one case');
         return setModal(true)
       }
       //save new data
