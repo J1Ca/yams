@@ -96,7 +96,7 @@ function Game() {
       const playerInfo = localData.find(e => e.name === activePlayer)
       const selectCase = playerInfo.grille.find(e => e.name === nameGrille)
       if (selectCase.fill === true) {
-        setModalText('Case already fill 🤦‍♂️ select another');
+        setModalText('Case already filled 🤦‍♂️ select another');
         return setModal(true)
       }
 
