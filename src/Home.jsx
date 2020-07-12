@@ -118,8 +118,8 @@ function Home() {
         
         <Row>
             <Col style={{margin:'30px'}} className='text-center'>
-                <Col style={{fontWeight:'800', fontSize:'3rem', color:'black', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Escribir algo<br/>de 3 lineas en <br/> los tels!</Col>
-                <Col style={{fontWeight:'500', fontSize:'1.1rem', color:'#7d7c83', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Create the perfect palette or get inspired<br/>by thousands of beautiful color schemes.</Col>
+                <Col style={{fontWeight:'800', fontSize:'3rem', color:'black', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>YAMS un classique <br/> revisité en React</Col>
+  <Col style={{fontWeight:'500', fontSize:'1.1rem', color:'#7d7c83', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Preparate quizas estas a punto de<br/>descubrir tu nueva adiccion 😊</Col>
             </Col>        
         </Row>
         <Row>
@@ -130,6 +130,7 @@ function Home() {
                         <option></option>  
                         <option>1</option>
                         <option>2</option>
+                        <option>3</option>
                     </Input>
                 </FormGroup>
 
