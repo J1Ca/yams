@@ -119,7 +119,7 @@ function Home() {
         <Row>
             <Col style={{margin:'30px'}} className='text-center'>
                 <Col style={{fontWeight:'800', fontSize:'3rem', color:'black', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>YAMS un classique <br/> revisité en React</Col>
-  <Col style={{fontWeight:'500', fontSize:'1.1rem', color:'#7d7c83', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Enjoy ce petit jeu que j'ai fait avec beacoup d'amour <span role='img' aria-label='smile'>😊</span></Col>
+  <Col style={{fontWeight:'500', fontSize:'1.1rem', color:'#7d7c83', lineHeight:'1.2', marginBottom:'30px', padding:'0px 0px'}}>Enjoy ce petit jeu que j'ai fait avec beaucoup d'amour <span role='img' aria-label='smile'>😊</span></Col>
             </Col>        
         </Row>
         <Row>

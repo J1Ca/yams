@@ -40,10 +40,10 @@ function Game() {
     const [gameCounter, setGameCounter] = useState(3);
     const [firstTime, setFirstTime] = useState(true);
     const [activePlayer, setActivePlayer] = useState(null);
-    const [allDices, setAllDices] = useState([])
-    const [selectedCase, setSelectedCase] = useState(null)
+    const [allDices, setAllDices] = useState([]);
+    const [selectedCase, setSelectedCase] = useState(null);
     const [modal, setModal] = useState(false);
-    const [modalText, setModalText] = useState(null)
+    const [modalText, setModalText] = useState(null);
 
     useEffect(() => {
       const checkingGameSnap = () => {
@@ -516,10 +516,9 @@ function Game() {
 
     //finish game
     if(globalCounter > (12*localData.length)){
-      setModalText(`🎉🎊Trop forte! 💪 t'as gagné🎊🎉`);
-      setModal(true)
+      alert(`🎉🎊Trop forte! 💪 t'as gagné🎊🎉`);
     }
-
+    
   return (
     <Container >
       <NavBar/>
